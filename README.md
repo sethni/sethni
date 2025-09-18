@@ -1,5 +1,22 @@
 ## Hi there 👋
 
+Subject: Coordination of Patching Schedule with AWS Cutover
+
+Hi [Recipient’s Name],
+
+As discussed over Teams, we noticed that the planned patching window overlaps with our AWS cutover night. Since the patching will be executed in a rolling fashion and only results in a partial outage, there is no expected impact to our activities.
+
+To help streamline both efforts, we kindly request if the patching can be initiated around 11:30 PM. This timing will allow our cutover activities to commence at 9:00 PM as scheduled, and by then we should be completed with the critical database activities.
+
+Please confirm if this adjustment can be accommodated. Your confirmation will help us align both change windows seamlessly.
+
+Thank you for your support and collaboration.
+
+Best regards,
+[Your Name]
+
+
+
 <!--
 **sethni/sethni** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
