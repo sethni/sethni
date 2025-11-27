@@ -1,4 +1,28 @@
 ## Hi there 👋
+SELECT
+    s.SID,
+    s.SERIAL#,
+    s.USERNAME,
+    s.EVENT,
+    s.MACHINE,
+    s.STATE,
+    s.SQL_ID,
+    q.SQL_FULLTEXT AS SQL_TEXT,
+    s.SECONDS_IN_WAIT AS SEC_WAITED,
+    s.LAST_CALL_ET AS LAST_CALL_SEC
+FROM
+    V$SESSION s,
+    V$SQL q
+WHERE
+    s.STATUS = 'ACTIVE'
+    AND s.TYPE != 'BACKGROUND'
+    AND s.SQL_ID = q.SQL_ID (+) -- Using (+) for a LEFT JOIN to ensure sessions without a current SQL_ID (like 'waiting for message') are still listed.
+ORDER BY
+    s.SECONDS_IN_WAIT DESC;
+
+
+
+
 
 SELECT s.SID, s.SERIAL#, s.USERNAME, s.EVENT, s.MACHINE, s.STATE, s.SQL_ID, REPLACE(TRIM(s.SQL_TEXT), CHR(10), ' ') AS SQL, -- Using s.SQL_TEXT (from V$SQL/V$SESSION) or s.PREV_SQL_ID depending on the exact source s.SECONDS_IN_WAIT AS SECONDS_WAITED, -- Or just 'WAITING' state time.s.LAST_CALL_ET AS LAST_CALL FROM V$SESSION s WHERE s.STATUS = 'ACTIVE' AND s.TYPE != 'BACKGROUND' ORDER BY s.SECONDS_IN_WAIT DESC;
 
